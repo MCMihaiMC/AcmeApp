@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Acme.Biz
 {
-    internal class Vendor
+    public class Vendor
     {
     }
 }
