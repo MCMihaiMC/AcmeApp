@@ -1,16 +1,34 @@
 ﻿namespace Acme.Biz
 {
+    /// <summary>
+    /// Manages products carried in inventaries.
+    /// </summary>
     public class Product
     {
         public const double InchesPerMeter = 30.97;
         public readonly decimal MinimumPrice;
 
         #region Constructors
+
+        // Default constructor
         public Product()
         {
+            Console.WriteLine("Product instance created");
+
             // initializing auto propertties in constructor
             this.MinimumPrice = .96m;
             this.Category = "tools";
+        }
+
+        // In below case the using of this allows us to invoke another constructor
+        // This is constructor chaining - reduces the code
+        public Product(int productId, string productName, string description) : this()
+        {
+            this.ProductId = productId;
+            this.ProductName = productName;
+            this.Description = description;
+
+            Console.WriteLine("Product instance has a name: " + ProductName);
         }
         #endregion
 
@@ -108,7 +126,23 @@
 
         public string ProductCode => this.Category + "-" + this.SequenceNumber;
 
+        #endregion
+
+        #region Methods
+
+        public decimal CalculateQuantityOnHand()
+        {
+            var quantity = 0;
+            // Calculate the number in inventory
+
+            return quantity;
+        }
+
+        public string SayHello()
+        {
+            return "Hello " + ProductName + " (" + ProductId + "): " + Description;
+        }
 
         #endregion
-        }
     }
+}

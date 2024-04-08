@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Acme.Biz;
 
 namespace Acme.BizTests
@@ -5,6 +6,39 @@ namespace Acme.BizTests
     [TestClass]
     public class ProductTests
     {
+        [TestMethod()]
+        public void SayHelloTest()
+        {
+            // Arrange
+            var currentProduct = new Product();
+            currentProduct.ProductName = "Sugar";
+            currentProduct.ProductId = 1;
+            currentProduct.Description = "To be used in coffee, tea and sweets";
+
+            var expected = "Hello Sugar (1): To be used in coffee, tea and sweets";
+
+            // Act
+            var actual = currentProduct.SayHello();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void SayHello_ParametrizedConstructor_Test()
+        {
+            // Arrange
+            var currentProduct = new Product(2, "Honey", "Better than sugar.");
+
+            var expected = "Hello Honey (2): Better than sugar.";
+
+            // Act
+            var actual = currentProduct.SayHello();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
         //[TestMethod()]
         //public void Product_Null()
         //{
@@ -17,7 +51,7 @@ namespace Acme.BizTests
 
         //    //Assert
         //    Assert.AreEqual(expected, actual);
-            
+
         //}
 
         [TestMethod()]
